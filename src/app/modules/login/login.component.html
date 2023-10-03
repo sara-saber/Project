@@ -5,19 +5,29 @@
         <p class="color-mor text-center text-lg font">Login</p>
         <div class="mt-2">
           <label class="block text-sm text-gray-900" for="username">Username</label>
-          <input [ngClass]="{'border-color-red':loginModel.get('username')?.errors && loginModel.get('username')?.touched}" class="border-color-mor w-full px-5 py-1 text-gray-700 input--style input-group rounded" formControlName="username"
+          <input [ngClass]="{'input-invalid':loginModel.get('username')?.errors && loginModel.get('username')?.touched}"
+            class="input-valid  w-full px-5 py-1 text-gray-700 input--style rounded" formControlName="username"
             type="text" placeholder="User Name" aria-label="username">
+          <div [ngClass]="message?'':'hidden'" class="margin-bottom">
+            <i class="fa fa-exclamation-circle text-sm text-red-700">{{message}}</i>
+          </div>
+
         </div>
         <div class="mt-2">
           <label class="block text-sm text-gray-900" for="password">Password</label>
-          <input  [ngClass]="{'border-color-red':loginModel.get('password')?.invalid && loginModel.get('password')?.touched }" class="border-color-mor w-full px-5  py-1 text-gray-700 input--style input-group rounded" formControlName="password"
+          <input
+            [ngClass]="{'input-invalid ':loginModel.get('password')?.invalid && loginModel.get('password')?.touched }"
+            class="input-valid  w-full px-5  py-1 text-gray-700 input--style rounded" formControlName="password"
             type="password" placeholder="*******" aria-label="password">
+          <div [ngClass]="{'hidden' :loginModel.get('password')?.errors}" class=" margin-bottom ">
+            <i class="fa fa-exclamation-circle text-sm text-red-700"> Please Enter Your Password</i>
+          </div>
         </div>
         <div class="mt-4 items-center justify-between">
-          <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded " [disabled]="loginModel.invalid" (click)="login()"
-            type="submit">Login</button>
-          <a data-bs-toggle="modal" data-bs-target="#PasswordModal"
-           routerLink="/restPassword" class="inline-block right-0 align-baseline color-mor font-bold text-sm text-500 hover:text-blue-800">
+          <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded "
+            [disabled]="loginModel.invalid" (click)="login()" type="submit">Login</button>
+          <a data-bs-toggle="modal" data-bs-target="#PasswordModal" routerLink="/restPassword"
+            class="inline-block right-0 align-baseline color-mor font-bold text-sm text-500 hover:text-blue-800">
             Forgot Password?
           </a>
         </div>

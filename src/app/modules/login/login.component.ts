@@ -1,8 +1,8 @@
 import { LocalStorageService } from './../shared/services/local-storage.service';
 import { UsersComponent } from './../dashboard/components/users/users.component';
 import { Observable } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user/services/user.service';
@@ -16,6 +16,9 @@ import { User } from '../user/model/user';
 export class LoginComponent implements OnInit {
   loginModel!: FormGroup;
   x: any
+  message!: string
+  error: boolean = false
+
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
@@ -29,13 +32,12 @@ export class LoginComponent implements OnInit {
     }
     else {
       this.loginModel = this.fb.group({
-        username: ["", [Validators.email,Validators.required]],
-        password: ["",[Validators.required ] ]
+        username: ["", [Validators.email, Validators.required]],
+        password: ["", [Validators.required]]
       })
     }
+
   }
-
-
   login() {
     let model = this.loginModel.value
     if (model.username && model.password) {
@@ -62,8 +64,8 @@ export class LoginComponent implements OnInit {
   setFalse() {
     return this.authService.setAuth(false)
   }
-  resetPassword(){
-    
+  resetPassword() {
+
   }
 
 }

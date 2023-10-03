@@ -8,7 +8,7 @@
 
 button {
     border: 1px solid #7049c0;
-    background-color:rgb(98, 39, 157);
+    background-color: rgb(98, 39, 157);
     color: #ffffff;
     padding: 5px 10px;
 }
@@ -45,14 +45,21 @@ button[disabled] {
 
 .input-group {
     position: relative;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 }
-.border-color-mor{
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+.input-valid {
     border-bottom: 2px solid #8501b5;
 }
-.border-color-red{
-    border-bottom: 2px solid #b60808;
+
+.input-invalid {
+    border-bottom: 2px solid #a01b00;
 }
+
 
 .color-mor {
     color: #8501b5;
