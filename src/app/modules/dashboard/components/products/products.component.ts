@@ -7,6 +7,7 @@ import { Image } from 'src/app/modules/shared/models/image-model';
 import { Category } from 'src/app/modules/categories/models/category';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from 'src/app/modules/shared/services/image.service';
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-products',
@@ -20,13 +21,13 @@ export class ProductsComponent implements OnInit {
   Icategory: Category[] = []
   product: Product = new Product
   productModel!: FormGroup
-  file!:File
+  file!: File
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private imageServie:ImageService) {
+    private imageServie: ImageService) {
     this.Iproduct = this.activatedRoute.snapshot.data['products']
     this.product.productImg = new Image
     this.categoryService.getAll().subscribe(res => {
@@ -40,15 +41,15 @@ export class ProductsComponent implements OnInit {
   }
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
-  
-    
+
+
   }
   getAllProduct() {
     this.productService.getAll().subscribe(
-      (res: Product[]) => { this.Iproduct = res}
+      (res: Product[]) => { this.Iproduct = res }
     )
   }
-  trackByProduct(index:number,product:Product){
+  trackByProduct(index: number, product: Product) {
     return product.id
   }
   defineModel() {
@@ -97,26 +98,41 @@ export class ProductsComponent implements OnInit {
     product.id === '0' ? this.addProduct() : this.updateProduct()
   }
   updateProduct() {
-  //  this.uploadImage()
-    this.product=new Product(this.productModel.value)
+    //  this.uploadImage()
+    this.product = new Product(this.productModel.value)
     this.productService.update(this.product).subscribe(res => {
       this.productService.getAll().subscribe(res => this.Iproduct = res)
     })
-  
+
   }
   addProduct() {
-    this.product = new Product(this.productModel.value)
-    this.product.createdAt = new Date
-    this.productService.add(this.product).subscribe((res) => { alert("Suceessfully added"), this.productModel.reset(), this.getAllProduct() }
-    )
+    this.productModel.valid ?
+      this.productModel.dirty ?
+        this.product = this.productModel.value :
+        (
+          this.product = new Product(this.productModel.value),
+          this.product.createdAt = new Date,
+          this.productService.add(this.product).subscribe(
+            {
+              next: () => (alert("Suceessfully added"), this.OnSaveComplete()),
+              error: () => console.log(error)
+            }))
+      :
+      console.log("")
   }
   onSelect(event: any) {
     this.file = event.target.files[0]
   }
-  uploadImage(){
+
+  uploadImage() {
     const formData = new FormData()
     formData.append('Image', this.file)
-    this.imageServie.uploadImage(formData).subscribe(res=>
+    this.imageServie.uploadImage(formData).subscribe(res =>
       console.log(res))
+  }
+
+  OnSaveComplete() {
+    this.productModel.reset()
+    this.getAllProduct()
   }
 }
