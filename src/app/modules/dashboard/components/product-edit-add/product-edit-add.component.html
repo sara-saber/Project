@@ -1,0 +1,189 @@
+<div class="flex flex-col">
+    <!-- Card Sextion Starts Here -->
+    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+        <!--Horizontal form-->
+        <div class="mb-2 border-solid border-grey-light rounded border shadow-sm w-full md:w-1/2 lg:w-1/2">
+            <div class="bg-gray-300 px-2 py-3 border-solid border-gray-400 border-b">
+                Inline Form
+            </div>
+            <div class="p-3" *ngIf="productModel">
+                <form class="w-full" [formGroup]="productModel">
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/4">
+                            <div class="product__details__pic">
+                                <div class="product__details__pic__item">
+                                    <img class="product__details__pic__item--large" formControlName="productImg"
+                                        [src]="product.productImg.imgSrc"
+                                        [alt]="product.productImg.imgAlt">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-3/4">
+                            <input accept="image/*"
+                                class="bg-grey-200 appearance-none border-1 border-grey-200 rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple-light"
+                                type="file" (change)="changeFile($event)">
+
+                            <!-- "this.productModel.get('productImg.imgSrc')?.value"  -->
+                            <button (click)="uploadImage()">Upload Image</button>
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/4">
+                            <label class="block text-gray-500 font-regular md:text-right mb-1 md:mb-0 pr-4">
+                                Product Name
+                            </label>
+                        </div>
+                        <div class="md:w-3/4">
+                            <input
+                                class="200 rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple-light"
+                                type="text" formControlName="productName">
+
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/4">
+                            <label class="block text-gray-500 font-regular md:text-right mb-1 md:mb-0 pr-4"
+                                for="inline-full-name">
+                                Product Price
+                            </label>
+                        </div>
+                        <div class="md:w-3/4">
+                            <input
+                                class="bg-grey-200 appearance-none border-1 border-grey-200 rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple-light"
+                                type="number" formControlName="productPrice">
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/4">
+                            <label class="block text-gray-500 font-regular md:text-right mb-1 md:mb-0 pr-4">
+                                Product Details
+                            </label>
+                        </div>
+                        <div class="md:w-3/4">
+                            <input
+                                class="bg-grey-200 appearance-none border-1 border-grey-200 rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple-light"
+                                type="text" formControlName="productDetails">
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/4">
+                            <label class="block text-gray-500 font-regular md:text-right mb-1 md:mb-0 pr-4">
+                                Category Name
+                            </label>
+                        </div>
+                        <div class="md:w-3/4">
+                            <select formControlName="categoryName"
+                                class="block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                                <option *ngFor="let category of Icategory" [value]="category.categoryName">
+                                    {{category.categoryName}}</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/4">
+                            <label class="block text-grey font-regular md:text-right mb-1 md:mb-0 pr-4"
+                                for="inline-username">
+                                Password
+                            </label>
+                        </div>
+                        <div class="md:w-3/4">
+                            <input
+                                class="bg-grey-200 appearance-none border-1 border-grey-200 rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple-light"
+                                id="inline-username" type="password" placeholder="******************">
+                        </div>
+                    </div> -->
+
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/3">Product Activated</div>
+                        <label class="md:w-2/3 block text-grey font-regular">
+                            <input class="mr-2 leading-tight" formControlName="isActive" type="checkbox">
+                            <span class="text-sm">
+                                İs Active!
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/3">
+                            <button (click)="save()"
+                                class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                                {{ this.id=='0' ? 'add' : 'save'}}
+                            </button>
+                        </div>
+                        <div class="md:w-2/3">
+                            <button (click)="delete()"
+                                class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                                {{ this.id=='0' ? 'cancel' : 'remove'}}
+                            </button>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!--/Horizontal form-->
+
+        <!--Underline form-->
+        <!-- <div
+            class="mb-2 md:mx-2 lg:mx-2 border-solid border-gray-200 rounded border shadow-sm w-full md:w-1/2 lg:w-1/2">
+            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
+                Underline Form
+            </div>
+            <div class="p-3">
+                <form class="w-full">
+                    <div class="flex items-center border-b border-b-1 border-teal-500 py-2">
+                        <input
+                            class="appearance-none bg-transparent border-none w-full text-gray-600 mr-3 py-1 px-2 lineHeight-tight focus:outline-none"
+                            type="text" placeholder="Jane Doe" aria-label="Full name">
+                        <button
+                            class="flex-shrink-0 bg-teal-500 hover:bg-teal-dark-700 border-teal-500 hover:border-teal-dark text-sm border-4 text-white py-1 px-2 rounded"
+                            type="button">
+                            Sign Up
+                        </button>
+                        <button
+                            class="flex-shrink-0 border-transparent border-4 text-teal hover:text-teal-darker text-sm py-1 px-2 rounded"
+                            type="button">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="flex items-center border-b border-b-1 border-red-500 py-2">
+                        <input
+                            class="appearance-none bg-transparent border-none w-full text-grey-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                            type="text" placeholder="Jane Doe" aria-label="Full name">
+                        <button
+                            class="flex-shrink-0 bg-teal-500 hover:bg-teal-dark-800 border-teal-500 hover:border-teal-800 text-sm border-4 text-white py-1 px-2 rounded"
+                            type="button">
+                            Sign Up
+                        </button>
+                        <button
+                            class="flex-shrink-0 border-transparent border-4 text-teal hover:text-teal-darker text-sm py-1 px-2 rounded"
+                            type="button">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="flex items-center border-b border-b-1 border-info py-2">
+                        <input
+                            class="appearance-none bg-transparent border-none w-full text-grey-darker mr-3 py-1 px-2 leading-tight focus:outline-none"
+                            type="text" placeholder="Jane Doe" aria-label="Full name">
+                        <button
+                            class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                            type="button">
+                            Sign Up
+                        </button>
+                        <button
+                            class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-700 text-sm py-1 px-2 rounded"
+                            type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+        <!--/Underline form-->
+    </div>

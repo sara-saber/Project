@@ -1,0 +1,32 @@
+<div class="bg-color container mx-auto h-full flex flex-1 justify-center items-center">
+  <div class="w-full max-w-lg">
+    <div class="leading-loose">
+      <form [formGroup]="loginModel" class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+        <p class="color-mor text-center text-lg font">Login</p>
+        <div class="mt-2">
+          <label class="block text-sm text-gray-900" for="username">Username</label>
+          <input class="w-full px-5 py-1 text-gray-700 input--style input-group rounded" formControlName="username"
+            type="text"   placeholder="User Name" aria-label="username">
+        </div>
+        <div class="mt-2">
+          <label class="block text-sm text-gray-900" for="password">Password</label>
+          <input class="w-full px-5  py-1 text-gray-700 input--style input-group rounded" formControlName="password"
+            type="password" placeholder="*******" aria-label="password">
+        </div>
+        <div class="mt-4 items-center justify-between">
+          <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded " [disabled]="loginModel.invalid" (click)="login()"
+            type="submit">Login</button>
+          <a data-bs-toggle="modal" data-bs-target="#PasswordModal"
+           routerLink="/restPassword" class="inline-block right-0 align-baseline color-mor font-bold text-sm text-500 hover:text-blue-800">
+            Forgot Password?
+          </a>
+        </div>
+        <a class="inline-block right-0 align-baseline color-mor font-bold text-sm text-500 hover:text-blue-800"
+          routerLink="/register">
+          Not registered ?
+        </a>
+      </form>
+
+    </div>
+  </div>
+</div>

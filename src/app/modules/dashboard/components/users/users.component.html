@@ -1,0 +1,154 @@
+<!-- <app-table [data]="Iuser" [model]="user" [name]="pageName"></app-table> -->
+
+<!--Remove Product Modal  -->
+<div class="modal fade" id="deleteProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{user.name}} {{user.surname}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Are you sure to delete this Product?</h2>
+            </div>
+            <div class="modal-footer">
+                <button (click)="removeUser(user.id)" type="button" class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div  [ngClass]="userFormVisible ? 'flex flex-col' : 'hidden flex flex-col'">
+    <!-- Card Sextion Starts Here -->
+    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+        <form [formGroup]="userModel" class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+            <p class="font color_green">Add New User</p>
+            <div>
+                <label class="block text-sm text-gray-00">Name</label>
+                <input class="w-full px-5 py-1 text-gray-700 input--style input-group rounded" formControlName="name"
+                    type="text" placeholder="Your Name" aria-label="Name">
+            </div>
+            <div class="inline-block mt-2 w-1/2 pr-1">
+                <label class="block text-sm text-gray-600">Surname</label>
+                <input class="w-full px-2 py-2 text-gray-700 input--style input-group rounded" formControlName="surname"
+                    type="text" placeholder="surname" aria-label="surname">
+            </div>
+            <div class="mt-2">
+                <label class="block text-sm text-gray-600">Email</label>
+                <input class="w-full px-5  py-4 text-gray-700 input--style input-group rounded" formControlName="email"
+                    type="text" placeholder="Your Email" aria-label="Email">
+            </div>
+            
+            <div formGroupName="address">
+                <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label class="block text-sm text-gray-600">Country</label>
+                    <select formControlName="country" (change)="getCity($event)"  class="input--style input-group">
+                            <option  value="">Select a country</option>
+                        <option *ngFor="let country of Icountry" [value]="country.name"> {{country.name}} </option>
+                    </select>
+                </div>
+                <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label class="block text-sm text-gray-600">City</label>
+                    <select formControlName="city" (change)="getPostal_code($event)" class="input--style input-group">
+                            <option value="">Select a country</option>
+                        <option *ngFor="let city of country.city" [value]="city.name"> {{city.name}} </option>
+                    </select>
+                </div>
+                <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label class="block text-sm text-gray-600">City</label>
+                    <select formControlName="postal_code" class="input--style input-group">
+                            <option value="">Select a country</option>
+                        <option *ngFor="let item of postalCode" [value]="item"> {{item}} </option>
+                    </select>
+                </div>
+               
+            </div>
+
+            <div class="mt-4">
+                <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" (click)="save()"
+                    type="submit">Save</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-----table-->
+<div *ngIf="Iuser" class="flex flex-1  flex-col md:flex-row lg:flex-row ">
+    <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+        <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
+            {{this.pageName}}
+            <a style="background-color: chartreuse;" routerLink="0">add {{this.pageName}}</a>
+        </div>
+        <div class="p-3">
+            <table class="table-responsive w-full rounded">
+                <thead>
+                    <tr>
+                        <th class="border w-1/4 px-4 py-2">Username </th>
+                        <th class="border w-1/4 px-4 py-2">Password </th>
+                        <th class="border w-1/4 px-4 py-2">Name surname </th>
+                        <th class="border w-1/4 px-4 py-2">Email </th>
+                        <th class="border w-1/4 px-4 py-2">Country </th>
+                        <th class="border w-1/4 px-4 py-2">City</th>
+                        <th class="border w-1/4 px-4 py-2">Zip </th>
+                        <th class="border w-1/4 px-4 py-2">Activated</th>
+                        <th class="border w-1/4 px-4 py-2">
+                            <button
+                                class="left shadow focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 round  bg-mor"
+                                (click)="showForm('0')">{{butTxt}}</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let user of Iuser; let i=index">
+                        <td class="border px-4 py-2">{{user.userName}}</td>
+                        <td class="border px-4 py-2">{{user.password}}</td>
+                        <td class="border px-4 py-2">{{user.name}} {{user.surname}}</td>
+                        <td class="border px-4 py-2">{{user.email}}</td>
+                        <td class="border px-4 py-2">{{user.address.country}}</td>
+                        <td class="border px-4 py-2">{{user.address.city}}  </td>
+                        <td class="border px-4 py-2">{{user.address.postal_code}}</td>
+                        <td class="border px-4 py-2">
+                            <i [ngClass]="user.isActive?'fa fa-check text-green-500 mx-2':'fa fa-close text-red-500 mx-2'"></i>
+                        </td>
+                        <td class="border px-4 py-2">
+                            <button class="rounded p-1 mx-1">
+                                <i #eye class="fa" [ngClass]="eyeVisible[i] ? 'fa-eye' : 'fa-eye-slash'"
+                                    (click)="viewUser(user.id,i)"></i></button>
+                            <!-- <button class="rounded p-1 mx-1">
+                                <i #eye class="fa" [ngClass]="eyeVisible[i] ? 'fa-eye' : 'fa-eye-slash'"
+                                    (mouseenter)="viewUser(user.id,i)" (mouseleave)="viewUser(user.id,i)"></i></button> -->
+                            <button class="rounded p-1 mx-1" (click)="showForm(user.id)">
+                                <i class="fa fa-edit text-green-500"></i></button>
+                            <button class="rounded p-1 mx-1"> <i class="fa fa-trash  text-red-500"
+                                    (click)="getUser(user.id)"  data-bs-toggle="modal" data-bs-target="#deleteProduct"></i></button>
+
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="user"  [ngClass]="userViewVisible?'card mb-3':'hidden card mb-3'" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img [src]="user.image" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
+                <p class="card-text">
+                    {{user.email}}</p>
+                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,179 @@
+<p>products Page</p>
+<!-- View Product Modal -->
+<div class="modal fade" id="productModal" data-bs-toggle="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card" style="width: 21rem;">
+                    <img [src]="product.productImg.imgSrc" class="card-img-top" [alt]="product.productImg.imgAlt">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.productName}} </h5>
+                        <p class="card-text">Details: {{product.productDetails}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Price : {{product.productPrice}} </li>
+                        <li class="list-group-item">Category Name : {{product.categoryName}} </li>
+                        <li class="list-group-item">Created At : {{product.createdAt}} Updated At :
+                            {{product.updatedAt}}</li>
+                        <li class="list-group-item">Updated At : {{product.updatedAt}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Remove Product Modal  -->
+<div class="modal fade" id="deleteProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{product.productName}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Are you sure to delete this Product?</h2>
+            </div>
+            <div class="modal-footer">
+                <button (click)="removeProduct(product.id)" data-bs-dismiss="modal" type="button"
+                    class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Edit Or Add Product Modal  -->
+<div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Card Sextion Starts Here -->
+                <form [formGroup]="productModel" class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+                    <div formGroupName="productImg" class="mt-2">
+                        <img style="border-radius: 150px!important" class="rounded mx-auto d-block"
+                            formControlName="imgSrc" [src]="product.productImg.imgSrc"
+                            [alt]="product.productImg.imgAlt">
+                        <input type="file" accept="image/*" (change)="onSelect($event)" placeholder="upload image">
+                    </div>
+                    <div class="mt-2">
+                        <label class="block text-sm text-gray-600">Product Name</label>
+                        <input class="w-full px-2 py-2 text-gray-700 input--style input-group rounded"
+                            formControlName="productName" type="text" aria-label="Name">
+
+                    </div>
+
+                    <div class="mt-2">
+                        <label class="block text-sm text-gray-600">Product Details</label>
+                        <input class="w-full px-2 py-2 text-gray-700 input--style input-group rounded"
+                            formControlName="productDetails" type="text" aria-label="Details">
+                    </div>
+                    <div class="mt-2 md:flex md:items-center">
+                        <div class="md:w-1/3 px-2 ">
+                            <label class="block text-sm text-gray-600">Product Price</label>
+                            <input class="w-full px-2 py-2 text-gray-700 input--style input-group rounded"
+                                formControlName="productPrice" type="number" aria-label="Price">
+                        </div>
+                        <div class="md:w-2/3 ">
+                            <label class="text-sm block text-gray-600">Category Name</label>
+                            <select class="input--style input-group">
+                                <option *ngFor="let category of Icategory" formArrayName="categoryName"
+                                    [value]="category.categoryName"> {{category.categoryName}} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-2 md:flex md:items-center">
+                        <div class="md:w-1/3">
+                            <label class="block text-sm text-gray-600">Product Actiated</label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input  w-full px-2 py-2" type="checkbox" role="switch"
+                                    [checked]="product.isActive" formControlName="isActive" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button (click)="save(product)" data-bs-dismiss="modal"
+                    class="shadow focus:shadow-outline focus:outline-none text-white font-bold py-2 round bg-red">
+                    Save
+                </button>
+                <button type="button"
+                    class="shadow focus:shadow-outline focus:outline-none text-white font-bold py-2 round bg-green"
+                    data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-table [data]="products" [model]="product" [name]="tableName"></app-table> -->
+<!-- Product Table -->
+
+<div *ngIf="Iproduct" class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+    <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+        <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
+            Products
+            <a style="background-color: chartreuse;" routerLink="0">add New Product</a>
+        </div>
+        <div class="p-3">
+            <table style="overflow:scroll; height:500px;" class="table-responsive w-full rounded">
+                <thead>
+                    <tr>
+
+                        <th class="border w-1/4 px-4 py-2">Product Image </th>
+                        <th class="border w-1/4 px-4 py-2">Product ID </th>
+                        <th class="border w-1/4 px-4 py-2">Product Name </th>
+                        <th class="border w-1/4 px-4 py-2">Product Price </th>
+                        <th class="border w-1/4 px-4 py-2">Category Name </th>
+                        <th class="border w-1/4 px-4 py-2">Product Details </th>
+                        <th class="border w-1/4 px-4 py-2">Activated </th>
+                        <th class="border w-1/4 px-4 py-2">
+                            <a data-bs-toggle="modal" data-bs-target="#editProduct" (click)="getProduct('0')">
+                                <i class="fa fa-plus text-green-500 mx-4"></i> </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let item of Iproduct ; trackBy:trackByProduct">
+
+                        <td class="border px-4 py-2">
+                            <img [src]="item.productImg.imgSrc" class="card-img-top" [alt]="item.productImg.imgAlt">
+                        </td>
+                        <td class="border px-4 py-2">{{item.id}}</td>
+                        <td class="border px-4 py-2">{{item.productName}}</td>
+                        <td class="border px-4 py-2">{{item.productPrice}}</td>
+                        <td class="border px-4 py-2">{{item.categoryName}}</td>
+                        <td class="border px-4 py-2">{{item.productDetails}}</td>
+                        <td class="border px-4 py-2"> <i
+                                [ngClass]="item.isActive?'fa fa-check text-green-500 mx-2':'fa fa-close text-red-500 mx-2'"></i>
+                        </td>
+                        <td class="border px-4 py-2">
+                            <a (click)="getProduct(item.id)" data-bs-toggle="modal" data-bs-target="#editProduct">
+                                <i class="fa fa-edit text-green-500 mx-4"></i></a>
+                            <a [routerLink]="item.id">
+                                <i class="fa fa-edit text-yellow-500 mx-4"></i></a>
+                            <a (click)="showProduct(item.id)" data-bs-toggle="modal" data-bs-target="#deleteProduct">
+                                <i class="fa fa-trash text-red-500 mx-4 "></i></a>
+                            <a (click)="showProduct(item.id)" data-bs-toggle="modal" data-bs-target="#productModal">
+                                <i class="fa fa-eye text-blue-500 mx-4"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

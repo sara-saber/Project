@@ -1,0 +1,72 @@
+.bg-color {
+    background-image: linear-gradient(#7049c0, rgb(98, 39, 157));
+}
+
+.container {
+    max-width: 100%;
+}
+
+button {
+    border: 1px solid #7049c0;
+    background-color:rgb(98, 39, 157);
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+button:hover {
+    border: 1px solid #bc48f2;
+    background-color: #5c1eb5;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+button:disabled,
+button[disabled] {
+    border: 1px solid hsl(0, 3%, 21%);
+    background-color: #343232;
+    color: #666666;
+}
+
+.input--style {
+    padding: 9px 9px;
+    color: #251e29;
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    font-family: inherit;
+    background-color: rgb(242, 240, 244);
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 32px;
+    border-bottom: 2px solid #8501b5;
+}
+
+.color-mor {
+    color: #8501b5;
+}
+
+.font {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal {
+    position: fixed;
+    top: 130px;
+    left: 35%;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}

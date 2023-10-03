@@ -1,0 +1,31 @@
+<div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+    <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+        <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
+           All {{this.name}} 
+        </div>
+        <div class="p-2">
+            <table style="overflow:scroll; height:400px;" class="table-responsive bg-grey-200 w-full rounded">
+                <thead>
+                    <tr>
+                        <th *ngFor="let column of getAttributeNames()" class="border px-4 py-2">{{column}} </th>
+                        <th class="border px-4 py-2">
+                            <a [routerLink]="'0'"><i class="fa fa-plus text-green-700 mx-4"></i> </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let item of data">
+                        <td *ngFor="let column of getAttributeNames()" class="border px-4 py-2">{{item[column] }}</td>
+                        <td class="border py-2">
+                            <!-- <button class="bg-blue-200 rounded p-1 mx-1">
+                                <i class="fa fa-eye" [routerLink]="'show/'+this.item.id"></i></button> -->
+                            <button class="bg-green-200 rounded p-1 mx-1">
+                                <i class="fa fa-edit" [routerLink]="this.item.id"></i></button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

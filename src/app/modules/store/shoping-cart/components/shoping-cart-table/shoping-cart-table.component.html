@@ -1,0 +1,41 @@
+<div class="shoping__cart__table">
+    <table>
+        <thead>
+            <tr>
+                <th class="shoping__product">Products</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cart.items">
+                <td class="shoping__cart__item">
+                    <img style="border-radius: 50%;width: 100px;height: 100px;" [src]="item.product.productImg.imgSrc" [alt]="item.product.productImg.imgAlt">
+                    <h5>{{item.product.productName}} </h5>
+                </td>
+                <td class="shoping__cart__price">
+                    {{item.product.productPrice}}
+                </td>
+
+                <td class="shoping__cart__quantity">
+                    <div class="quantity">
+                        <div class="pro-qty">
+                            <span (click)="decrease(item)"  class="dec qtybtn">-</span>
+                            <input  type="text" value={{item.quantity}} >
+                            <span (click)="increase(item)" class="inc qtybtn">+</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="shoping__cart__total">
+                    {{item.total}}
+                </td>
+                <td class="shoping__cart__item__close">
+                    <span (click)="removeItem(item.product)" class="icon_close"></span>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

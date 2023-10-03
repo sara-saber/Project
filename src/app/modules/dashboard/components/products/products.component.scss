@@ -1,0 +1,58 @@
+.modal {
+    position: fixed;
+    top: 130px;
+    left:35%;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+.card {
+    position: relative;
+    display: flex;
+    margin-left:50px;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+.px-4 {
+    padding-right: 3.5rem!important;
+}
+.modal-xl{
+    width: 968px;
+}
+button{
+    margin: 32px;
+}
+.bg-red{
+    background-color: #05964b
+}
+.bg-red:hover{
+    background-color:  rgb(119, 201, 134)  
+
+}
+.bg-green{
+    background-color: #9573d7
+}
+.bg-green:hover{
+    background-color:  #7d61b6
+}
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 3.25rem;
+}
+.form-switch .form-check-input {
+    width: 5em;
+    height: 21px;
+}
+.form-check-input:checked {
+    background-color:   #9573d7;
+    border-color:  #7d61b6
+}
