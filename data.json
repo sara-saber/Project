@@ -18,6 +18,7 @@
       "id": 4
     },
     {
+      "image": "assets/img/user/user-3.jpg",
       "name": "Sara",
       "surname": "soso",
       "email": "sara@gmail.com",
@@ -32,6 +33,7 @@
       "id": 6
     },
     {
+      "image": "assets/img/user/user-3.jpg",
       "name": "sara",
       "surname": "saber",
       "email": "sara20@gmail.com",
@@ -44,10 +46,11 @@
       "updatedAt": "2023-09-01T21:24:09.217Z",
       "isActive": true,
       "userName": "sara20@gmail.com",
-      "password": "sara_*2023",
+      "password": "Sara25;",
       "id": 7
     },
     {
+      "image": "assets/img/user/user-3.jpg",
       "name": "sara",
       "surname": "saber",
       "email": "sara@gmail.com",
@@ -64,6 +67,7 @@
       "id": 8
     },
     {
+      "image": "assets/img/user/user-3.jpg",
       "name": "mohammed",
       "surname": "ali",
       "email": "mohammed@gmail.com",
@@ -76,10 +80,11 @@
       "updatedAt": "2023-09-16T17:45:56.849Z",
       "isActive": true,
       "userName": "mohammed@gmail.com",
-      "password": "mohammed_*2023",
+      "password": "Ma",
       "id": 10
     },
     {
+      "image": "assets/img/user/user-3.jpg",
       "name": "ali",
       "surname": "s",
       "email": "ali@gmail.com",
@@ -96,6 +101,7 @@
       "id": 12
     },
     {
+      "image": "assets/img/user/user-3.jpg",
       "name": "sara",
       "surname": "saber",
       "email": "ssssssss@gmail.com",
@@ -112,6 +118,7 @@
       "id": 13
     },
     {
+      "image": "assets/img/user/user-3.jpg",
       "name": "ayham",
       "surname": "asd",
       "email": "a@gmail.com",
