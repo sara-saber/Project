@@ -11,9 +11,7 @@ export class LoginRegisterGuard implements CanActivate {
     private lS:LocalStorageService,
     private router:Router
     ){}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
+  canActivate(): boolean {
     return  this.lS.get('user')?(this.router.navigate(['/admin/dashboard']),false):(true)
   }
   

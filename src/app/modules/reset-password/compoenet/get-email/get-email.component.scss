@@ -2,5 +2,19 @@
     width: 100%;
 }
 .border-color-red {
-    border-bottom: 2px solid #8d0c08
+    border-bottom: 2px solid #660603
+}
+
+button[disabled],
+button[disabled]:hover{
+    border: 1px solid hsla(2, 89%, 29%, 0.767);
+    background-color:  #bd272798;
+    color: #cc0000;
+}
+
+button:hover,
+button[hover]{
+    border: 1px solid hsl(2, 89%, 29%);
+    background-color: #8f0909ef;
+    color: #ffffff;
 }

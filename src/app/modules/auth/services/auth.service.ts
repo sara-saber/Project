@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '../../user/services/user.service';
+
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { UserService } from '../../user/services/user.service';
 
 @Injectable({
   providedIn: 'root'

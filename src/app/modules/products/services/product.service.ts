@@ -7,7 +7,6 @@ import { Product } from '../models/product';
 })
 export class ProductService extends ResourceService<Product>{
   constructor(http:HttpClient) {
-   // super(http,Product,'https://63dacb542af48a60a7d5eac3.mockapi.io/products');
    super(http,Product,'http://localhost:3000/product');
    }
 }

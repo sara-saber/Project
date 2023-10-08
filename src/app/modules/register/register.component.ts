@@ -1,10 +1,10 @@
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user/services/user.service';
 import { CountryService } from '../user/services/country.service';
 import { City, Country } from '../user/model/address';
 import { User } from '../user/model/user';
 import { Router } from '@angular/router';
+import { UserService } from '../user/services/user.service';
 
 
 

@@ -4,8 +4,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../../user/model/user';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Address, Country } from 'src/app/modules/user/model/address';
-import { UserService } from 'src/app/modules/user/services/user.service';
+
 import { CountryService } from 'src/app/modules/user/services/country.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 
 
 @Component({

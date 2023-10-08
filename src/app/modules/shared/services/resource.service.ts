@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResourceModel } from '../models/generic-model';
 import { map, Observable, tap } from 'rxjs';
-import { ActivatedRouteSnapshot, Resolve, ResolveEnd, ResolveStart, RouterStateSnapshot } from '@angular/router';
+import { Resolve} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,8 @@ export abstract class ResourceService<T extends ResourceModel<T>> implements Res
     private tConstructor: { new(m: Partial<T>, ...args: unknown[]): T },
     protected apiUrl: string
   ) { }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<T[]> {
+  resolve(): Observable<T[]> {
     return this.getAll()
-
   }
   public getQuery(attributeName: string, value: any): Observable<T> {
     return this.http

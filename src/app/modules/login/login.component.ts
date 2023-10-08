@@ -1,7 +1,5 @@
 import { LocalStorageService } from './../shared/services/local-storage.service';
-import { UsersComponent } from './../dashboard/components/users/users.component';
-import { Observable } from 'rxjs';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
@@ -25,6 +23,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private lS: LocalStorageService,
     private router: Router) { }
+
   ngOnInit(): void {
     if (this.lS.get('user')) {
       this.setTrue()

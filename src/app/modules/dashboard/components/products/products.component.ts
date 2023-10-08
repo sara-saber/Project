@@ -39,11 +39,6 @@ export class ProductsComponent implements OnInit {
     this.defineModel()
     console.table(this.Iproduct)
   }
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-
-
-  }
   getAllProduct() {
     this.productService.getAll().subscribe(
       (res: Product[]) => { this.Iproduct = res }
