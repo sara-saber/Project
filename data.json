@@ -2,23 +2,6 @@
   "user": [
     {
       "image": "assets/img/user/user-3.jpg",
-      "name": "sas",
-      "surname": "ss",
-      "email": "ss",
-      "isActive": false,
-      "address": {
-        "country": "Suriye",
-        "city": "Homs",
-        "postal_code": "33322"
-      },
-      "createdAt": "2023-08-25T21:43:25.963Z",
-      "updatedAt": "2023-08-25T21:43:25.963Z",
-      "userName": "ss",
-      "password": "sas_*2023",
-      "id": 4
-    },
-    {
-      "image": "assets/img/user/user-3.jpg",
       "name": "Sara",
       "surname": "soso",
       "email": "sara@gmail.com",
@@ -46,25 +29,8 @@
       "updatedAt": "2023-09-01T21:24:09.217Z",
       "isActive": true,
       "userName": "sara20@gmail.com",
-      "password": "Sara25;",
+      "password": "Sara2023;",
       "id": 7
-    },
-    {
-      "image": "assets/img/user/user-3.jpg",
-      "name": "sara",
-      "surname": "saber",
-      "email": "sara@gmail.com",
-      "address": {
-        "city": "Merisn",
-        "country": "Turkey",
-        "postal_code": ""
-      },
-      "createdAt": "2023-09-07T06:28:36.728Z",
-      "updatedAt": "2023-09-07T06:28:36.728Z",
-      "isActive": false,
-      "userName": "sara@gmail.com",
-      "password": "sara_*2023",
-      "id": 8
     },
     {
       "image": "assets/img/user/user-3.jpg",
@@ -99,40 +65,6 @@
       "userName": "ali@gmail.com",
       "password": "ali_*2023",
       "id": 12
-    },
-    {
-      "image": "assets/img/user/user-3.jpg",
-      "name": "sara",
-      "surname": "saber",
-      "email": "ssssssss@gmail.com",
-      "address": {
-        "city": "Homs",
-        "country": "Suriye",
-        "postal_code": "33323"
-      },
-      "createdAt": "2023-09-17T11:59:17.710Z",
-      "updatedAt": "2023-09-17T11:59:17.710Z",
-      "isActive": false,
-      "userName": "ssssssss@gmail.com",
-      "password": "sara_*2023",
-      "id": 13
-    },
-    {
-      "image": "assets/img/user/user-3.jpg",
-      "name": "ayham",
-      "surname": "asd",
-      "email": "a@gmail.com",
-      "address": {
-        "city": "Aleppo",
-        "country": "Suriye",
-        "postal_code": "33320"
-      },
-      "createdAt": "2023-09-17T12:11:04.649Z",
-      "updatedAt": "2023-09-17T12:11:04.649Z",
-      "isActive": false,
-      "userName": "a@gmail.com",
-      "password": "ayham_*2023",
-      "id": 14
     }
   ],
   "product": [
@@ -773,7 +705,7 @@
         },
         {
           "id": "4",
-          "name": "Azmir",
+          "name": "İzmir",
           "postal_code": [
             33316,
             33317

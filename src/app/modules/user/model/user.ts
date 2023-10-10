@@ -12,11 +12,9 @@ export interface User {
 
 export class User extends ResourceModel<User> implements User {
     userName: string
-    password: string
     constructor(user?: Partial<User>) {
         super(user);
         this.userName = user ?.email || 'null'
-        this.password = user?.name + '_*2023' || ''
     }
 
 

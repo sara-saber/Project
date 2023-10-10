@@ -19,7 +19,7 @@
             [ngClass]="{'input-invalid ':loginModel.get('password')?.invalid && loginModel.get('password')?.touched }"
             class="input-valid  w-full px-5  py-1 text-gray-700 input--style rounded" formControlName="password"
             type="password" placeholder="*******" aria-label="password">
-          <div [ngClass]="{'hidden' :loginModel.get('password')?.errors}" class=" margin-bottom ">
+          <div [ngClass]="{'hidden' :loginModel.get('password')?.valid || !loginModel.get('password')?.dirty}" class=" margin-bottom ">
             <i class="fa fa-exclamation-circle text-sm text-red-700"> Please Enter Your Password</i>
           </div>
         </div>
