@@ -8,13 +8,14 @@ export interface User {
     address: Address
     userName: string
     password: string
+    phone?: number[]
 }
 
 export class User extends ResourceModel<User> implements User {
     userName: string
     constructor(user?: Partial<User>) {
         super(user);
-        this.userName = user ?.email || 'null'
+        this.userName = user?.email || 'null'
     }
 
 

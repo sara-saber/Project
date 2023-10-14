@@ -65,6 +65,39 @@
       "userName": "ali@gmail.com",
       "password": "ali_*2023",
       "id": 12
+    },
+    {
+      "name": "sa",
+      "surname": "sa",
+      "email": "sa@gmail.com",
+      "phone": null,
+      "address": {
+        "country": "Turkey",
+        "city": "istanbul",
+        "postal_code": "33313"
+      },
+      "sendNotification": null,
+      "createdAt": "2023-10-13T14:00:38.136Z",
+      "updatedAt": "2023-10-13T14:00:38.136Z",
+      "isActive": false,
+      "userName": "sa@gmail.com",
+      "id": 13
+    },
+    {
+      "name": "Sara",
+      "surname": "Saber",
+      "email": "sarah.sa.2023@gmail.com",
+      "phone": 539688679,
+      "address": {
+        "country": "Turkey",
+        "city": "Merisn",
+        "postal_code": "33314"
+      },
+      "createdAt": "2023-10-14T07:42:31.024Z",
+      "updatedAt": "2023-10-14T07:42:31.024Z",
+      "isActive": false,
+      "userName": "sarah.sa.2023@gmail.com",
+      "id": 14
     }
   ],
   "product": [

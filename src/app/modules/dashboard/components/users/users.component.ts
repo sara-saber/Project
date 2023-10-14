@@ -2,7 +2,7 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../../user/model/user';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Address, Country } from 'src/app/modules/user/model/address';
 
 import { CountryService } from 'src/app/modules/user/services/country.service';
@@ -26,6 +26,7 @@ export class UsersComponent implements OnInit {
   userFormVisible = false
   userViewVisible = false
   eyeVisible: boolean[] = []
+  phoneVisible = false
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -53,16 +54,28 @@ export class UsersComponent implements OnInit {
   }
   defineModel() {
     this.userModel = this.fb.group({
-      name: [''],
-      surname: [''],
-      email: [''],
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: '',
       address: this.fb.group({
-        country: [''],
-        city: [''],
+        country: ['', Validators.required],
+        city: ['', Validators.required],
         postal_code: ['']
       })
     })
   }
+  sendNotification(controlName: string, event: any) {
+    if (event.target.value == 'phone') {
+      this.phoneVisible = !this.phoneVisible
+    }
+    if (controlName == 'phone' && event.target.checked) {
+      this.userModel.get(controlName)?.setValidators(Validators.required)
+    }
+
+  }
+
+
   showForm(id: any) {
     this.getAllCountry()
     this.userFormVisible === false ?
@@ -145,6 +158,14 @@ export class UsersComponent implements OnInit {
   getPostal_code(event: any) {
     this.postalCode = this.country.city.find(city => city.name === event.target.value)?.postal_code
   }
+  classValidate(controlName: string): string {
+    const c = this.userModel.get(controlName)
+    if (c?.touched) {
+      return c.errors ? 'input-invalid ' : 'input-valid '
+    }
+    return ''
+  }
+
 
 
 }
